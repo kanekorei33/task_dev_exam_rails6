@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>House name:</strong>
+  <%= @rent_house.house_name %>
+</p>
+
+<p>
+  <strong>Rent:</strong>
+  <%= @rent_house.rent %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @rent_house.address %>
+</p>
+
+<p>
+  <strong>Age:</strong>
+  <%= @rent_house.age %>
+</p>
+
+<p>
+  <strong>Remaks:</strong>
+  <%= @rent_house.remaks %>
+</p>
+
+<%= link_to 'Edit', edit_rent_house_path(@rent_house) %> |
+<%= link_to 'Back', rent_houses_path %>

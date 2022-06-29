@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Route name:</strong>
+  <%= @station.route_name %>
+</p>
+
+<p>
+  <strong>Station name:</strong>
+  <%= @station.station_name %>
+</p>
+
+<p>
+  <strong>On foot:</strong>
+  <%= @station.on_foot %>
+</p>
+
+<p>
+  <strong>Rent house:</strong>
+  <%= @station.rent_house_id %>
+</p>
+
+<%= link_to 'Edit', edit_station_path(@station) %> |
+<%= link_to 'Back', stations_path %>
