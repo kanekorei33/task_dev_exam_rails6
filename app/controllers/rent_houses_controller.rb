@@ -8,15 +8,18 @@ class RentHousesController < ApplicationController
 
   # GET /rent_houses/1 or /rent_houses/1.json
   def show
+    @stations = @rent_house.stations
   end
 
   # GET /rent_houses/new
   def new
     @rent_house = RentHouse.new
+    2.times { @rent_house.stations.build }
   end
 
   # GET /rent_houses/1/edit
   def edit
+    @rent_house.stations.build
   end
 
   # POST /rent_houses or /rent_houses.json
@@ -25,7 +28,7 @@ class RentHousesController < ApplicationController
 
     respond_to do |format|
       if @rent_house.save
-        format.html { redirect_to @rent_house, notice: "Rent house was successfully created." }
+        format.html { redirect_to @rent_house, notice: "物件を登録しました！" }
         format.json { render :show, status: :created, location: @rent_house }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +41,7 @@ class RentHousesController < ApplicationController
   def update
     respond_to do |format|
       if @rent_house.update(rent_house_params)
-        format.html { redirect_to @rent_house, notice: "Rent house was successfully updated." }
+        format.html { redirect_to @rent_house, notice: "物件を編集しました！" }
         format.json { render :show, status: :ok, location: @rent_house }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -51,7 +54,7 @@ class RentHousesController < ApplicationController
   def destroy
     @rent_house.destroy
     respond_to do |format|
-      format.html { redirect_to rent_houses_url, notice: "Rent house was successfully destroyed." }
+      format.html { redirect_to rent_houses_url, notice: "物件を消去しました" }
       format.json { head :no_content }
     end
   end
@@ -64,6 +67,7 @@ class RentHousesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def rent_house_params
-      params.require(:rent_house).permit(:house_name, :rent, :address, :age, :remaks)
+      params.require(:rent_house).permit(:house_name, :rent, :address, :age, :remaks, stations_attributes: [
+        :route_name, :station_name, :on_foot, :station_id, :id, :_destroy])
     end
 end
