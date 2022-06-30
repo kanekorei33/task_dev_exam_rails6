@@ -68,6 +68,6 @@ class RentHousesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def rent_house_params
       params.require(:rent_house).permit(:house_name, :rent, :address, :age, :remaks, stations_attributes: [
-        :route_name, :station_name, :on_foot, :station_id, :id, :_destroy])
+        :route_name, :station_name, :on_foot, :rent_house_id, :id, :_destroy])
     end
 end
