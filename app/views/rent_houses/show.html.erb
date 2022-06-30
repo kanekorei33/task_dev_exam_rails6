@@ -1,29 +1,47 @@
 <p id="notice"><%= notice %></p>
 
+<h1>閲覧</h1>
 <p>
-  <strong>House name:</strong>
+  <strong>物件名</strong>
   <%= @rent_house.house_name %>
 </p>
 
 <p>
-  <strong>Rent:</strong>
-  <%= @rent_house.rent %>
+  <strong>賃料</strong>
+  <%= @rent_house.rent %>円
 </p>
 
 <p>
-  <strong>Address:</strong>
+  <strong>住所</strong>
   <%= @rent_house.address %>
 </p>
 
 <p>
-  <strong>Age:</strong>
-  <%= @rent_house.age %>
+  <strong>築年数</strong>
+  <%= @rent_house.age %>年
 </p>
 
 <p>
-  <strong>Remaks:</strong>
+  <strong>備考</strong>
   <%= @rent_house.remaks %>
 </p>
 
-<%= link_to 'Edit', edit_rent_house_path(@rent_house) %> |
-<%= link_to 'Back', rent_houses_path %>
+<hr>
+<tr>
+<% num = 0 %>
+  <%= @stations.each do |station| %>
+    <% if @rent_house.stations.any? %>
+
+    <h3>最寄り駅<%= num += 1 %></h3>
+
+    路線名 <%= station.route_name %><br>
+
+    駅名 <%= station.station_name %><br>
+
+    徒歩分数 <%= station.on_foot %>分<br>
+
+  <% end %>
+<% end %>
+</tr>
+<%= link_to '編集', edit_rent_house_path(@rent_house) %>
+<%= link_to '戻る', rent_houses_path %>

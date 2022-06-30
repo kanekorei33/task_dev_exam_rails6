@@ -35,18 +35,20 @@
     <%= form.label :備考%>
     <%= form.text_area :remaks %>
   </div>
-
+<hr>
     <tr>
+    <% num = 1 %>
       <%= form.fields_for :stations do |stations_form| %>
-      最寄り駅：
+      最寄り駅<%= "#{num}"%><br>
         <td><%= stations_form.label :路線名 %></td>
-        <td><%= stations_form.text_field :route_name %></td>
+        <td><%= stations_form.text_field :route_name %></td><br>
 
         <td><%= stations_form.label :駅名 %></td>
-        <td><%= stations_form.text_field :station_name %></td>
+        <td><%= stations_form.text_field :station_name %></td><br>
 
         <td><%= stations_form.label :徒歩分数 %></td>
-        <td><%= stations_form.text_field :on_foot %>分</td>
+        <td><%= stations_form.text_field :on_foot %>分</td><br>
+        <% num += 1 %>
       <% end %>
     </tr>
 

@@ -54,7 +54,7 @@ class RentHousesController < ApplicationController
   def destroy
     @rent_house.destroy
     respond_to do |format|
-      format.html { redirect_to rent_houses_url, notice: "物件を消去しました" }
+      format.html { redirect_to rent_houses_url, notice: "Rent house was successfully destroyed." }
       format.json { head :no_content }
     end
   end
